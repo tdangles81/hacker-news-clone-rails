@@ -4,12 +4,12 @@ class PostsController < ApplicationController
   end
 
   def new
-  end
-
-  def create
+    post = Post.new(post_params)
   end
 
   def show
+    @post = Post.find(params[:format])
+
   end
 
   def edit
@@ -19,5 +19,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :content)
   end
 end

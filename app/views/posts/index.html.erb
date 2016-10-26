@@ -17,14 +17,15 @@
       <p>
         <span class='username'><%= post.user.username %></span>
 
-        <a class="delete" href='/posts/<%= post.id %>'></a>
+        <a class="delete" href='/posts/<%= post.id %>'>Delete</a>
       </p>
     </article>
 
   <% end %>
 </div>
 
-<form id="posts" method="post" action="/posts">
-  <input type="text" name="title" placeholder="title">
-  <input type="submit" value="submit new post">
-</form>
+<%=form_for :post, url: posts_new_path do |f| %>
+  <%=f.text_field :title%>
+  <%=f.text_field :content%>
+  <%=f.submit%>
+<%end%>

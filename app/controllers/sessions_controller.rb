@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-
   end
 
   def create
@@ -10,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
-      @errors = ["Username and Password don't match."]
+      @errors = user.errors.full_messages
       render :new
     end
   end
